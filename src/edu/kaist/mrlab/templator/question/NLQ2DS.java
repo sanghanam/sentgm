@@ -16,7 +16,7 @@ import java.util.StringTokenizer;
  * @author sangha
  *
  */
-public class Converter {
+public class NLQ2DS {
 
 	private HashMap<String, ArrayList<String>> varDic = new HashMap<String, ArrayList<String>>();
 	private ArrayList<String> varList = new ArrayList<String>();
@@ -27,7 +27,7 @@ public class Converter {
 		return varList;
 	}
 
-	public Converter() {
+	public NLQ2DS() {
 		this.loadVarDic();
 	}
 
@@ -121,7 +121,7 @@ public class Converter {
 
 	public static void main(String[] ar) throws Exception {
 
-		Converter convt = new Converter();
+		NLQ2DS convt = new NLQ2DS();
 
 		convt.loadVarDic();
 

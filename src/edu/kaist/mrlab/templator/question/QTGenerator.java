@@ -22,23 +22,21 @@ public class QTGenerator {
 	private ArrayList<String> josa = new ArrayList<String>();
 	private BufferedReader br;
 
-	private Converter c = new Converter();
+	private NLQ2DS c = new NLQ2DS();
 	private SRDF srdf = new SRDF();
 	private KoSeCT kosect = new KoSeCT();
 	private Preprocessor p = new Preprocessor();
 	private SentenceSplitter ss = new SentenceSplitter();
 
-	public String generateQT(String input) {
+	public ArrayList<String> generateQT(String input) {
 
 		return transformToTGM(srdf.doOneSentence(kosect, p, ss, input));
-		// return srdf.doOneSentence(kosect, p, ss, input);
 
 	}
 
-	private String transformToTGM(String input) {
+	private ArrayList<String> transformToTGM(String input) {
 
 		ArrayList<String> srdfTriples = new ArrayList<String>();
-		String result = "";
 		StringTokenizer st = new StringTokenizer(input, "\n");
 
 		while (st.hasMoreTokens()) {
@@ -51,13 +49,7 @@ public class QTGenerator {
 
 		ArrayList<String> tgmTriples = transform(srdfTriples);
 
-		for (int i = 0; i < tgmTriples.size(); i++) {
-
-			result += tgmTriples.get(i) + "\n";
-
-		}
-
-		return result;
+		return tgmTriples;
 
 	}
 
@@ -95,7 +87,6 @@ public class QTGenerator {
 				}
 
 				result = subject + "\t" + predicate + "\t" + object;
-				System.out.println(result);
 				tgmTriples.add(result);
 
 			} else if (!obj.equals("ANONYMOUS") && josa.contains(pred)) {
@@ -124,7 +115,6 @@ public class QTGenerator {
 				}
 				
 				result = subject + "\t" + predicate + "\t" + object;
-				System.out.println(result);
 				tgmTriples.add(result);
 
 			} else if (!obj.equals("ANONYMOUS")) {
@@ -136,7 +126,6 @@ public class QTGenerator {
 				doubleReified = true;
 				
 				result = subject + "\t" + predicate + "\t" + object;
-				System.out.println(result);
 				tgmTriples.add(result);
 
 			}
