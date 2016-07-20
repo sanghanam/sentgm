@@ -10,6 +10,7 @@ import edu.kaist.mrlab.templator.question.QTGenerator;
 /**
  * 
  * Pipeline of Korean Template Generation Module
+ * This is the main class of SenTGM
  * 
  * @author sangha
  *
@@ -47,19 +48,9 @@ public class PipeAll {
 		while((question = fbr.readLine())!= null){
 			System.out.println(question);
 			String result = pa.run(question);
-			System.out.println(result);
+//			System.out.println(result);
 			System.out.println();
 		}
-		
-//		File file = new File("data/input.txt");
-//		fis = new FileInputStream(file);
-//		byte[] data = new byte[(int) file.length()];
-//		fis.read(data);
-//		String input = new String(data, "UTF-8");
-//
-//		System.out.println(input);
-//		String result = pa.run(input);
-//		System.out.println(result);
 
 	}
 }

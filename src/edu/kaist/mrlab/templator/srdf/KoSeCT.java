@@ -10,7 +10,6 @@ import java.util.Scanner;
 import java.util.Set;
 
 import edu.kaist.mrlab.templator.srdf.data.Chunk;
-import edu.kaist.mrlab.templator.srdf.data.Sentence;
 import edu.kaist.mrlab.templator.srdf.modules.Chunker;
 import edu.kaist.mrlab.templator.srdf.modules.CoreExtractor;
 import edu.kaist.mrlab.templator.srdf.modules.DPWDChanger;
@@ -52,114 +51,7 @@ public class KoSeCT {
 
 		return sentence;
 	}
-
-	public ArrayList<Chunker> doPreprocessWithSplitting(String input) {
-		ArrayList<Chunker> chunkers = new ArrayList<Chunker>();
-
-		try {
-			String prevSBJ = "";
-			String output1 = ex.getResult(input);
-			String output2 = parser.parse(output1);
-
-			ArrayList<Integer> segPoint = ss.findSegPoint(output2);
-			ArrayList<Sentence> segSentence = ss.getSegmentedSentence(segPoint);
-			for (int i = 0; i < segSentence.size(); i++) {
-
-				Sentence tempSTC = segSentence.get(i);
-
-				chunker = new Chunker();
-
-				if (tempSTC.isContainsSBJ()) {
-					String text = tempSTC.getTextOfSentence();
-					// String text = input;
-					String output3 = ex.getResult(text);
-					
-					if(p.passOrNot(output3)){
-						return chunkers;
-					}
-					
-					String output4 = parser.parse(output3);
-					String result = dtc.change(output4);
-
-					chunker.chunk(result);
-
-					// chunker.printChunks2File(filebw);
-//					chunker.printSTC2Console();
-
-					// String pattern = getPattern(chunker);
-					// System.out.println(pattern);
-					//
-					// if (tp.isMatchedType1(pattern)) {
-					// p1++;
-					// } else if (tp.isMatchedType2(pattern)) {
-					// p2++;
-					// } else if (tp.isMatchedType3(pattern)) {
-					// p3++;
-					// } else if (tp.isMatchedType4(pattern)) {
-					// p4++;
-					// }
-
-					seperatedSentence++;
-
-					boolean SBJflag = false;
-
-					ArrayList<Chunk> npChunks = chunker.getNPChunks();
-					for (int j = 0; j < npChunks.size(); j++) {
-						if (npChunks.get(j).getLabel().contains("SBJ") && !SBJflag) {
-							prevSBJ = npChunks.get(j).getChunk() + npChunks.get(j).getPostposition();
-							SBJflag = true;
-						}
-					}
-
-				} else {
-
-					String beAttachedSBJ = prevSBJ + " " + tempSTC.getTextOfSentence();
-
-					String output3 = ex.getResult(beAttachedSBJ);
-					
-					if(p.passOrNot(output3)){
-						return chunkers;
-					}
-					
-					
-					
-					String output4 = parser.parse(output3);
-					String result = dtc.change(output4);
-
-					if(result.length() == 0){
-						
-						continue;
-					}
-					
-					chunker.chunk(result);
-
-//					chunker.printSTC2Console();
-					seperatedSentence++;
-
-				}
-
-				chunkers.add(chunker);
-
-				// for(int n = 0; n < chunker.getNPChunks().size(); n++){
-				// nv.add(chunker.getNPChunks().get(n));
-				// }
-				//
-				// for(int v = 0; v < chunker.getVPChunks().size(); v++){
-				// nv.add(chunker.getVPChunks().get(v));
-				// }
-				//
-				// for(int n = 0; n < nv.size(); n++){
-				// System.out.println(nv.get(n).getID());
-				// }
-
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return chunkers;
-	}
-
+	
 	public ArrayList<Chunker> doPreprocessWithoutSplitting(String input) {
 		ArrayList<Chunker> chunkers = new ArrayList<Chunker>();
 
@@ -174,11 +66,8 @@ public class KoSeCT {
 			}
 			
 			String output4 = parser.parse(output3);
-			String result = dtc.change(output4);
-
-			chunker.chunk(result);
-
-//			chunker.printChunks2Console();
+//			String result = dtc.change(output4);
+			chunker.chunk(output4);
 			chunkers.add(chunker);
 
 		} catch (Exception e) {
@@ -255,9 +144,6 @@ public class KoSeCT {
 
 		input = input.replace("〈", "'");
 		input = input.replace("〉", "'");
-		
-//		input = input.replace("을것이다", "을 것이다");
-//		input = input.replace("오르가논입니다", "오르가논 입니다");
 		
 		return input;
 	}
