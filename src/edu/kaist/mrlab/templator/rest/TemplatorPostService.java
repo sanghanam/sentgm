@@ -1,7 +1,6 @@
 package edu.kaist.mrlab.templator.rest;
 
 import javax.ws.rs.Consumes;
-
 import javax.ws.rs.FormParam;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
@@ -11,18 +10,22 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONException;
 
-@Path("/templator/ko")
+import edu.kaist.mrlab.templator.pipeline.PipeAll;
+
+@Path("/sentgm")
 public class TemplatorPostService {
 
 	@POST
 	@Consumes("application/json; charset=UTF-8")
 	@Produces("application/json; charset=UTF-8")
 	// @Produces("text/plain; charset=UTF-8")
-	public Response getPost(String input) throws JSONException {
+	public Response getPost(String input) throws Exception {
 
 		// @FormParam("text")
-		
-		String result = input;
+
+		PipeAll pa = new PipeAll();
+
+		String result = pa.run(input);
 
 		return Response.ok(result).entity(result)
 				.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")

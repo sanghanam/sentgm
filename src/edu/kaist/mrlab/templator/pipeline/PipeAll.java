@@ -24,20 +24,18 @@ public class PipeAll {
 	private static BufferedReader fbr;
 
 	private static InputParser ip;
-	private static NLQ2DS conv;
+	private static NLQ2DS nlq2ds;
 	private static QTGenerator qtg;
 	private static QT2JSON po;
 
 	public String run(String input) throws Exception {
 
 		String question = ip.getQuestion(input);
-		String sentence = conv.getDS(question);
-		System.out.println(sentence);
+		String sentence = nlq2ds.getDS(question);
 		ArrayList<String> qTriples = qtg.generateQT(sentence);
 		JSONObject output = po.printOutput(question, qTriples);
-		System.out.println(output);
 
-		return transformArrToStr(qTriples);
+		return output.toString();
 	}
 
 	public String transformArrToStr(ArrayList<String> input) {
@@ -64,7 +62,7 @@ public class PipeAll {
 	public static void main(String[] ar) throws Exception {
 
 		ip = new InputParser();
-		conv = new NLQ2DS();
+		nlq2ds = new NLQ2DS();
 		qtg = new QTGenerator();
 		po = new QT2JSON();
 

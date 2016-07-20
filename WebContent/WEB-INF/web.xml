@@ -20,6 +20,6 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Jersey Web Application</servlet-name>
-    <url-pattern>/frdf/*</url-pattern>
+    <url-pattern>/sentgm/*</url-pattern>
   </servlet-mapping>
 </web-app>
