@@ -1,0 +1,10 @@
+{ "string": "서울에 있는 산은 무엇인가?", "language": "ko" }
+{ "string": "세계에서 가장 높은 산은 무엇인가?", "language": "ko" }
+{ "string": "한국의 수도는 무엇인가?", "language": "ko" }
+{ "string": "미국의 수도는 무엇인가?", "language": "ko" }
+{ "string": "와인 생산지로 알려진 나라는 무엇인가?", "language": "ko" }
+{ "string": "와인으로 유명한 나라는 무엇인가?", "language": "ko" }
+{ "string": "16대 대한민국 대통령은 누구인가?", "language": "ko" }
+{ "string": "1904년에 생리학 혹은 의학 노벨상을 수상한 러시아의  생리학자는 누구인가?", "language": "ko" }
+{ "string": "한국의 나라꽃은 무엇인가?", "language": "ko" }
+{ "string": "예수의 어머니는 누구인가?", "language": "ko" }
