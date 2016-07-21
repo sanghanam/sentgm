@@ -37,6 +37,7 @@ public class Chunker {
 		return VPChunks;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void chunk(String json) {
 		try {
 
@@ -45,7 +46,7 @@ public class Chunker {
 
 			JSONArray stn = (JSONArray) reader.get("sentence");
 
-			Iterator<?> s = stn.iterator();
+			Iterator<Object> s = stn.iterator();
 
 			while (s.hasNext()) {
 
@@ -60,7 +61,7 @@ public class Chunker {
 
 				// head가 -1인 VP를 찾는다.
 
-				Iterator<?> d = depenArr.iterator();
+				Iterator<Object> d = depenArr.iterator();
 
 				ArrayList<Integer> tempMod = new ArrayList<Integer>();
 				ArrayList<Integer> VPMod = new ArrayList<Integer>();
@@ -90,7 +91,7 @@ public class Chunker {
 						StringEdit.replaceLast(VPChunk, etc, "");
 						// VPChunk = VPChunk.replace(etc, "");
 
-						Iterator<?> m = depenMod.iterator();
+						Iterator<Object> m = depenMod.iterator();
 						while (m.hasNext()) {
 							int ti = (int) (long) m.next();
 							tempMod.add(ti);
@@ -103,7 +104,7 @@ public class Chunker {
 				// mod를 하나씩 depenID로 따라간다.
 
 				for (int i = 0; i < VPMod.size(); i++) {
-					Iterator<?> d2 = depenArr.iterator();
+					Iterator<Object> d2 = depenArr.iterator();
 					for (int j = 0; j < VPMod.get(i); j++) {
 						d2.next();
 					}
@@ -119,6 +120,7 @@ public class Chunker {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void recur(JSONObject target) {
 
 		ArrayList<Integer> APID = new ArrayList<Integer>();
@@ -128,7 +130,7 @@ public class Chunker {
 		String targetLabel = (String) target.get("label");
 		String targetText = (String) target.get("text");
 		JSONArray targetMod = (JSONArray) target.get("mod");
-		Iterator<?> m = targetMod.iterator();
+		Iterator<Object> m = targetMod.iterator();
 		while (m.hasNext()) {
 			tempMod.add((int) (long) m.next());
 		}
@@ -166,7 +168,7 @@ public class Chunker {
 				tempC.setAPID(APID);
 
 				if (tempMod.size() != 0) {
-					Iterator<?> d2 = depenArr.iterator();
+					Iterator<Object> d2 = depenArr.iterator();
 					for (int j = 0; j < tempMod.get(0); j++) {
 						d2.next();
 					}
@@ -216,7 +218,7 @@ public class Chunker {
 			}
 
 			for (int i = 0; i < tempModArr.size(); i++) {
-				Iterator<?> d2 = depenArr.iterator();
+				Iterator<Object> d2 = depenArr.iterator();
 				for (int j = 0; j < tempModArr.get(i); j++) {
 					d2.next();
 				}
@@ -230,6 +232,7 @@ public class Chunker {
 	}
 
 	// chunk와 postposition 분리 함수
+	@SuppressWarnings("unchecked")
 	public String getPostposition(int ID, String label) {
 
 		String chunk = "";
@@ -239,7 +242,7 @@ public class Chunker {
 		// 해당 begin과 end 사이에 위치한 POS-Tag 정보를 보면서
 		// 조사 표현에 해당하는 부분을 떼어냄
 
-		Iterator<?> w = wordArr.iterator();
+		Iterator<Object> w = wordArr.iterator();
 
 		for (int i = 0; i < ID; i++) {
 			w.next();
@@ -253,7 +256,7 @@ public class Chunker {
 		// System.out.println(wordBegin);
 		// System.out.println(wordEnd);
 
-		Iterator<?> m = morpArr.iterator();
+		Iterator<Object> m = morpArr.iterator();
 
 		for (int j = 0; j < wordBegin; j++) {
 			m.next();
@@ -352,6 +355,7 @@ public class Chunker {
 		System.out.println();
 	}
 
+	@SuppressWarnings("unchecked")
 	public String processMod(JSONObject target, String input) {
 
 		String result = input;
@@ -364,7 +368,7 @@ public class Chunker {
 		// if (NPLabel.contains("NP")) {
 		ArrayList<Integer> NPModArr = new ArrayList<Integer>();
 
-		Iterator<?> n = NPMod.iterator();
+		Iterator<Object> n = NPMod.iterator();
 
 		while (n.hasNext()) {
 			NPModArr.add((int) (long) n.next());
@@ -373,7 +377,7 @@ public class Chunker {
 		if (!NPModArr.isEmpty()) {
 			for (int k = NPModArr.size() - 1; k >= 0; k--) {
 
-				Iterator<?> npd = depenArr.iterator();
+				Iterator<Object> npd = depenArr.iterator();
 
 				for (int l = 0; l < NPModArr.get(k); l++) {
 					npd.next();

@@ -7,7 +7,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -57,7 +56,7 @@ public class KoreanEL {
 		return post(url, params, "UTF-8");
 	}
 
-	public static void main(String[] args) throws JSONException {
+	public static void main(String[] args) throws Exception {
 
 		KoreanEL rct = new KoreanEL();
 

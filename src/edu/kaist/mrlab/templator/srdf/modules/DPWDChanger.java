@@ -36,7 +36,7 @@ public class DPWDChanger {
 
 			JSONArray stn = (JSONArray) reader.get("sentence");
 
-			Iterator<?> s = stn.iterator();
+			Iterator<Object> s = stn.iterator();
 
 			while (s.hasNext()) {
 
@@ -69,7 +69,7 @@ public class DPWDChanger {
 				 * 
 				 */
 
-				Iterator<?> dt = depenArr.iterator();
+				Iterator<Object> dt = depenArr.iterator();
 				boolean stop = true;
 				while (dt.hasNext()) {
 					JSONObject innerDepen = (JSONObject) dt.next();
@@ -81,7 +81,7 @@ public class DPWDChanger {
 					}
 				}
 
-				ListIterator<?> d = depenArr.listIterator(depenArr.size());
+				ListIterator<Object> d = depenArr.listIterator(depenArr.size());
 
 				if (d.hasPrevious()) {
 					JSONObject innerDepen = (JSONObject) d.previous();
@@ -104,7 +104,7 @@ public class DPWDChanger {
 					String depenLabel = (String) innerDepen.get("label");
 					JSONArray depenMod = (JSONArray) innerDepen.get("mod");
 					ArrayList<Integer> depenModArr = new ArrayList<Integer>();
-					Iterator<?> dm = depenMod.iterator();
+					Iterator<Object> dm = depenMod.iterator();
 					while (dm.hasNext()) {
 						depenModArr.add((int) (long) dm.next());
 					}
@@ -119,7 +119,7 @@ public class DPWDChanger {
 						// System.out.println(depenText);
 						// }
 
-						Iterator<?> w = wordArr.iterator();
+						Iterator<Object> w = wordArr.iterator();
 
 						// System.out.println(depenID + "\t" + depenText + "\t"
 						// + depenLabel);
@@ -137,7 +137,7 @@ public class DPWDChanger {
 						// System.out.println(wordID + "\t" + wordText + "\t"
 						// + wordBegin + "\t" + wordEnd);
 
-						Iterator<?> m = morpArr.iterator();
+						Iterator<Object> m = morpArr.iterator();
 
 						for (int j = 0; j < wordBegin; j++) {
 							m.next();
@@ -153,7 +153,7 @@ public class DPWDChanger {
 							String morpType = (String) innerMorp.get("type");
 							String morpLemma = (String) innerMorp.get("lemma");
 
-							Iterator<?> pm = morpArr.iterator();
+							Iterator<Object> pm = morpArr.iterator();
 
 							for (int i = 0; i < (int) morpID - 1; i++) {
 								pm.next();
@@ -188,7 +188,7 @@ public class DPWDChanger {
 								if (depenModArr.size() > 0) {
 
 									for (int i = 0; i < depenModArr.size(); i++) {
-										Iterator<?> dma = depenArr.iterator();
+										Iterator<Object> dma = depenArr.iterator();
 										for (int j = 0; j < depenModArr.get(i); j++) {
 											dma.next();
 										}
@@ -279,7 +279,7 @@ public class DPWDChanger {
 		long targetWordBegin = (long) targetWord.get("begin");
 		long targetWordEnd = (long) targetWord.get("end");
 
-		Iterator<?> m = morpArr.iterator();
+		Iterator<Object> m = morpArr.iterator();
 
 		for (int j = 0; j < targetWordBegin; j++) {
 			m.next();
@@ -362,12 +362,12 @@ public class DPWDChanger {
 			targetWord.replace("end", targetWordEnd, newLastWordBegin = (int) (targetWordBegin + wordEndCount - 1));
 
 			ArrayList<Integer> removeID = new ArrayList<Integer>();
-			Iterator<?> dm = targetDepenMod.iterator();
+			Iterator<Object> dm = targetDepenMod.iterator();
 
 			int sbjID = -1;
 
 			while (dm.hasNext()) {
-				Iterator<?> da = depenArr.iterator();
+				Iterator<Object> da = depenArr.iterator();
 				long id = (long) dm.next();
 				for (int i = 0; i < id; i++) {
 					da.next();
@@ -400,7 +400,7 @@ public class DPWDChanger {
 			// entity의
 
 			if (sbjID != -1) {
-				Iterator<?> tempD = depenArr.iterator();
+				Iterator<Object> tempD = depenArr.iterator();
 				for (int i = 0; i < sbjID; i++) {
 					tempD.next();
 				}
@@ -462,7 +462,8 @@ public class DPWDChanger {
 
 	public int getNewHead(int oldHead) {
 
-		Iterator<?> d = depenArr.iterator();
+		@SuppressWarnings("unchecked")
+		Iterator<Object> d = depenArr.iterator();
 		for (int i = 0; i < oldHead; i++) {
 			d.next();
 		}
@@ -493,7 +494,7 @@ public class DPWDChanger {
 
 	@SuppressWarnings("unchecked")
 	public void changeModOfNewHead(int newMod, int addMod) {
-		Iterator<?> d = depenArr.iterator();
+		Iterator<Object> d = depenArr.iterator();
 		for (int i = 0; i < newMod; i++) {
 			d.next();
 		}
