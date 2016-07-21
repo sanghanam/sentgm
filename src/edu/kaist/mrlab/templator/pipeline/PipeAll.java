@@ -1,7 +1,5 @@
 package edu.kaist.mrlab.templator.pipeline;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.ArrayList;
 
 import org.json.JSONObject;
@@ -21,12 +19,10 @@ import edu.kaist.mrlab.templator.question.QTGenerator;
  */
 public class PipeAll {
 
-	private static BufferedReader fbr;
-
-	private static InputParser ip;
-	private static NLQ2DS nlq2ds;
-	private static QTGenerator qtg;
-	private static QT2JSON po;
+	private InputParser ip = new InputParser();
+	private NLQ2DS nlq2ds = new NLQ2DS();
+	private QTGenerator qtg = new QTGenerator();
+	private QT2JSON po = new QT2JSON();
 
 	public String run(String input) throws Exception {
 
@@ -58,24 +54,5 @@ public class PipeAll {
 		}
 
 	}
-
-	public static void main(String[] ar) throws Exception {
-
-		ip = new InputParser();
-		nlq2ds = new NLQ2DS();
-		qtg = new QTGenerator();
-		po = new QT2JSON();
-
-		PipeAll pa = new PipeAll();
-
-		fbr = new BufferedReader(new FileReader("data/input.txt"));
-		String question;
-		while ((question = fbr.readLine()) != null) {
-			System.out.println(question);
-			String result = pa.run(question);
-			System.out.println(result);
-			System.out.println();
-		}
-
-	}
+	
 }
