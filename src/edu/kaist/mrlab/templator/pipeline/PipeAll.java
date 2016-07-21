@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 import edu.kaist.mrlab.templator.question.InputParser;
 import edu.kaist.mrlab.templator.question.NLQ2DS;
-import edu.kaist.mrlab.templator.question.QT2JSON;
+import edu.kaist.mrlab.templator.question.QT2Template;
 import edu.kaist.mrlab.templator.question.QTGenerator;
 
 /**
@@ -22,7 +22,7 @@ public class PipeAll {
 	private InputParser ip = new InputParser();
 	private NLQ2DS nlq2ds = new NLQ2DS();
 	private QTGenerator qtg = new QTGenerator();
-	private QT2JSON po = new QT2JSON();
+	private QT2Template po = new QT2Template();
 
 	public String run(String input) throws Exception {
 

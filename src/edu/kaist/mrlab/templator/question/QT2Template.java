@@ -5,19 +5,23 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class QT2JSON {
+public class QT2Template {
 
 	public JSONObject printOutput(String question, ArrayList<String> input) {
 
 		JSONObject result = new JSONObject();
 		JSONArray slotJArr = new JSONArray();
 
+		String order = "ORDER BY DESC ";
+		String orderVar = null;
 		String query = "SELECT v1 WHERE { ";
 		String[][] sparqlVars = new String[input.size()][3];
 		String[][] sparqlVerbs = new String[input.size()][3];
 
 		ArrayList<Slot> slotList = new ArrayList<Slot>();
-
+		
+		boolean isEst = false;
+		
 		/**
 		 * below is for query
 		 */
@@ -121,6 +125,24 @@ public class QT2JSON {
 					slotJArr.put(tempJObj);
 
 				}
+				
+				// special case '-est'
+				else if (j == 1 && sparqlVerbs[i][j].contains("가장")) {
+
+					tempJObj.put("p", "is");
+					tempJObj.put("o", "rdf:Property");
+					slotJArr.put(tempJObj);
+
+					tempJObj = new JSONObject();
+					tempJObj.put("s", var);
+					tempJObj.put("p", "verbalization");
+					tempJObj.put("o", verb.replace("가장", "").trim());
+					slotJArr.put(tempJObj);
+					
+					orderVar = sparqlVars[i][j+1];
+					isEst = true;
+
+				}
 
 				// it means now it is property.
 				else if (j == 1) {
@@ -157,6 +179,26 @@ public class QT2JSON {
 				}
 
 			}
+		}
+		
+		if(isEst){
+			
+			query += order + "(" + orderVar + ") LIMIT 1";
+			
+			for(int i = 0; i < slotJArr.length(); i++){
+			
+				JSONObject slot = (JSONObject)slotJArr.get(i);
+				String strS = (String) slot.get("s");
+				if(strS.equals(orderVar)){
+
+					slotJArr.remove(i);
+					i--;
+					
+				}
+				
+			}
+			
+			
 		}
 
 		result.put("question", question);

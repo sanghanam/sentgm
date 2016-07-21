@@ -98,20 +98,23 @@ public class NLQ2DS {
 			}
 		}
 
-		if (varPosition == -1) {
+		if (varPosition == -1 && (input.contains("은?") || input.contains("는?"))) {
 			
-			return "This question cannot be processed";
+			declStc = "무엇은 " + input.substring(0, input.length() - 2);
+//			return "This question cannot be processed";
 
-		}
+		} else{
+			
+			if (subject.contains("몇 개")) {
 
-		if (subject.contains("몇 개")) {
+				declStc = input.substring(0, varPosition + 3);
 
-			declStc = input.substring(0, varPosition + 3);
+			} else {
 
-		} else {
+				declStc = subject + "는 " + input.substring(0, varPosition - 2);
 
-			declStc = subject + "는 " + input.substring(0, varPosition - 2);
-
+			}
+			
 		}
 
 		declStc = declStc + "이다.";
