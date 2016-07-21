@@ -15,9 +15,9 @@ Input:
 `"
 
 
-"`
-Output:
 
+Output:
+"`
 {
   "score": 1,
   "slots": [
