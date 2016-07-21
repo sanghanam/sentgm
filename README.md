@@ -1,11 +1,11 @@
 # SenTGM
-SenTGM is a SRDF-based Korean Template Generation module for generating SPARQL template from natural language question. 
-And also SenTGM is designed for the [OKBQA](www.okbqa.org) framework.
+SenTGM is a SRDF-based Korean Template Generation module for generating SPARQL template from natural language question. <br>
+And also SenTGM is designed for the [OKBQA](www.okbqa.org) framework.<br>
 SPARQL template follows 'templator' module made by christina unger. (you can see the current version of templator at https://github.com/okbqa/rocknrole)
 
 
 ## REST service
-Target: http://ws.okbqa.org:1666/sentgm
+Target: http://ws.okbqa.org:1666/sentgm <br>
 The repository contains example file (data/input.txt), One example per line. It can be used for testing.
 
 ## Example
@@ -65,8 +65,7 @@ Output:
 Which expresses the following SPARQL template:
 
 "`
-SELECT ?v1 WHERE {
-	?v1 	type	산.
-	?v1 	있   	서울.
-}
+SELECT ?v1 WHERE { <br>
+	?v1 	type	산. <br>
+	?v1 	있   	서울. }
 `"
