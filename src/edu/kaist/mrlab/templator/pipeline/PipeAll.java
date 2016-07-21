@@ -28,7 +28,9 @@ public class PipeAll {
 
 		String question = ip.getQuestion(input);
 		String sentence = nlq2ds.getDS(question);
+		System.out.println(sentence);
 		ArrayList<String> qTriples = qtg.generateQT(sentence);
+		System.out.println(qTriples);
 		JSONObject output = po.printOutput(question, qTriples);
 
 		return output.toString();

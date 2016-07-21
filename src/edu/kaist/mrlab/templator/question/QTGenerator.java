@@ -30,7 +30,9 @@ public class QTGenerator {
 
 	public ArrayList<String> generateQT(String input) {
 
-		return transformToTGM(srdf.doOneSentence(kosect, p, ss, input));
+		String temp = srdf.doOneSentence(kosect, p, ss, input);
+		System.out.println(temp);
+		return transformToTGM(temp);
 
 	}
 
