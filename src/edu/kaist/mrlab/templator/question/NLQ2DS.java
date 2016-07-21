@@ -99,7 +99,7 @@ public class NLQ2DS {
 		}
 
 		if (varPosition == -1) {
-
+			
 			return "This question cannot be processed";
 
 		}
@@ -125,7 +125,7 @@ public class NLQ2DS {
 
 		convt.loadVarDic();
 
-		fbr = new BufferedReader(new FileReader("data/questions.txt"));
+		fbr = new BufferedReader(new FileReader("data/testsuit.txt"));
 		String question;
 		while ((question = fbr.readLine()) != null) {
 			String declStc = convt.getDS(question);
