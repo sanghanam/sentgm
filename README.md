@@ -19,48 +19,48 @@ Input:
 
 Output:
 
-{
-  "score": 1,
-  "slots": [
-    {
-      "p": "is",
-      "s": "v2",
-      "o": "<http://lodqa.org/vocabulary/sort_of>"
-    },
-    {
-      "p": "is",
-      "s": "v3",
-      "o": "rdf:Class"
-    },
-    {
-      "p": "verbalization",
-      "s": "v3",
-      "o": "산"
-    },
-    {
-      "p": "is",
-      "s": "v4",
-      "o": "rdf:Property"
-    },
-    {
-      "p": "verbalization",
-      "s": "v4",
-      "o": "있"
-    },
-    {
-      "p": "is",
-      "s": "v5",
-      "o": "rdf:Resource|rdfs:Literal"
-    },
-    {
-      "p": "verbalization",
-      "s": "v5",
-      "o": "서울"
-    }
-  ],
-  "question": "서울에 있는 산은?",
-  "query": "SELECT v1 WHERE { ?v1 ?v2 ?v3 . ?v1 ?v4 ?v5 . } "
-}
+	{
+		"score": 1,
+		"slots": [
+			{
+				"p": "is",
+				"s": "v2",
+				"o": "<http://lodqa.org/vocabulary/sort_of>"
+			},
+			{
+				"p": "is",
+				"s": "v3",
+				"o": "rdf:Class"
+			},
+			{
+				"p": "verbalization",
+				"s": "v3",
+				"o": "산"
+			},
+			{
+				"p": "is",
+				"s": "v4",
+				"o": "rdf:Property"
+			},
+			{
+				"p": "verbalization",
+				"s": "v4",
+				"o": "있"
+			},
+			{
+				"p": "is",
+				"s": "v5",
+				"o": "rdf:Resource|rdfs:Literal"
+			},
+			{
+				"p": "verbalization",
+				"s": "v5",
+				"o": "서울"
+			}
+		],
+		"question": "서울에 있는 산은?",
+		"query": "SELECT v1 WHERE { ?v1 ?v2 ?v3 . ?v1 ?v4 ?v5 . } "
+	}
 
 
 Which expresses the following SPARQL template:
