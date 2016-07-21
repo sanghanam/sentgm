@@ -71,6 +71,7 @@ Which expresses the following SPARQL template:
 		?v1 	있   	서울. }
 
 ## Reference
-Nam, Sangha, et al. "SRDF: Korean Open Information Extraction using Singleton Property."
-SRDF repository: https://github.com/machinereading/SRDF-1.0
+If you use the source code, please cite the following papers. <br><br>
+Nam, Sangha, et al. "SRDF: Korean Open Information Extraction using Singleton Property."<br><br>
+SRDF repository: https://github.com/machinereading/SRDF-1.0 <br><br>
 SRDF current version (2.0) will be released !
