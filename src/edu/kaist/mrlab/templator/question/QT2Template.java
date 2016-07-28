@@ -14,7 +14,7 @@ public class QT2Template {
 
 		String order = "ORDER BY DESC ";
 		String orderVar = null;
-		String query = "SELECT v1 WHERE { ";
+		String query = "SELECT ?v1 WHERE { ";
 		String[][] sparqlVars = new String[input.size()][3];
 		String[][] sparqlVerbs = new String[input.size()][3];
 
@@ -183,7 +183,7 @@ public class QT2Template {
 		
 		if(isEst){
 			
-			query += order + "(" + orderVar + ") LIMIT 1";
+			query += order + "(?" + orderVar + ") LIMIT 1";
 			
 			for(int i = 0; i < slotJArr.length(); i++){
 			
