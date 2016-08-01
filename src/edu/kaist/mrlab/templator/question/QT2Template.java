@@ -7,9 +7,10 @@ import org.json.JSONObject;
 
 public class QT2Template {
 
-	public JSONObject printOutput(String question, ArrayList<String> input) {
+	public JSONArray printOutput(String question, ArrayList<String> input) {
 
 		JSONObject result = new JSONObject();
+		JSONArray resultArr = new JSONArray();
 		JSONArray slotJArr = new JSONArray();
 
 		String order = "ORDER BY DESC ";
@@ -206,7 +207,9 @@ public class QT2Template {
 		result.put("slots", slotJArr);
 		result.put("score", 1.0);
 
-		return result;
+		resultArr.put(result);
+		
+		return resultArr;
 	}
 
 }

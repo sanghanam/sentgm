@@ -37,7 +37,7 @@ public class TemplatorPostService {
 	@OPTIONS
 	@Consumes("application/x-www-form-urlencoded; charset=utf-8")
 	@Produces("text/plain; charset=utf-8")
-	public Response getFRDFOptions(@FormParam("text") String input) throws JSONException {
+	public Response getOptions(@FormParam("text") String input) throws JSONException {
 
 		return Response.ok().header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 				.header("Access-Control-Allow-Origin", "*")

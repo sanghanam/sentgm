@@ -2,7 +2,7 @@ package edu.kaist.mrlab.templator.pipeline;
 
 import java.util.ArrayList;
 
-import org.json.JSONObject;
+import org.json.JSONArray;
 
 import edu.kaist.mrlab.templator.question.InputParser;
 import edu.kaist.mrlab.templator.question.NLQ2DS;
@@ -31,7 +31,7 @@ public class PipeAll {
 		System.out.println(sentence);
 		ArrayList<String> qTriples = qtg.generateQT(sentence);
 		System.out.println(qTriples);
-		JSONObject output = po.printOutput(question, qTriples);
+		JSONArray output = po.printOutput(question, qTriples);
 
 		return output.toString();
 	}
