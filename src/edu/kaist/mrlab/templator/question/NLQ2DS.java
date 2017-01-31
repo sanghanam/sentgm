@@ -21,7 +21,6 @@ public class NLQ2DS {
 	private HashMap<String, ArrayList<String>> varDic = new HashMap<String, ArrayList<String>>();
 	private ArrayList<String> varList = new ArrayList<String>();
 	private BufferedReader br;
-	private static BufferedReader fbr;
 
 	public ArrayList<String> getVarList() {
 		return varList;
@@ -99,12 +98,39 @@ public class NLQ2DS {
 		}
 
 		if (varPosition == -1 && (input.contains("은?") || input.contains("는?"))) {
-			
-			declStc = "무엇은 " + input.substring(0, input.length() - 2);
-//			return "This question cannot be processed";
 
-		} else{
+			declStc = "무엇은 " + input.substring(0, input.length() - 2);
+			// return "This question cannot be processed";
+
+		}
+
+		// 어떤 강이 서울을 흐르는가?
+		// 어떤는 서울을 흐르는 강이다.
+		else if (varPosition == 0) {
 			
+			if(subject.equals("어떤")){
+			
+				input = input.substring(0, input.length() - 2);
+				ArrayList<String> inputToken = new ArrayList<String>();
+				StringTokenizer st = new StringTokenizer(input, " ");
+				while(st.hasMoreTokens()){
+					inputToken.add(st.nextToken());
+				}
+				
+				declStc = subject + "는 ";
+				
+				for(int i = 2; i < inputToken.size(); i++){
+					declStc += inputToken.get(i) + " ";
+				}
+				
+				String lastWord = inputToken.get(1).substring(0, inputToken.get(1).length() - 1);
+				
+				declStc += lastWord;
+				
+			}
+			
+		} else {
+
 			if (subject.contains("몇 개")) {
 
 				declStc = input.substring(0, varPosition + 3);
@@ -114,7 +140,7 @@ public class NLQ2DS {
 				declStc = subject + "는 " + input.substring(0, varPosition - 2);
 
 			}
-			
+
 		}
 
 		declStc = declStc + "이다.";
@@ -128,14 +154,11 @@ public class NLQ2DS {
 
 		convt.loadVarDic();
 
-		fbr = new BufferedReader(new FileReader("data/testsuit.txt"));
-		String question;
-		while ((question = fbr.readLine()) != null) {
-			String declStc = convt.getDS(question);
-			System.out.println("NLQ:\t" + question);
-			System.out.println("DS:\t" + declStc);
-			System.out.println();
-		}
+		String question = "어떤 강이 서울을 흐르는가?";
+		String declStc = convt.getDS(question);
+		System.out.println("NLQ:\t" + question);
+		System.out.println("DS:\t" + declStc);
+		System.out.println();
 
 	}
 }
