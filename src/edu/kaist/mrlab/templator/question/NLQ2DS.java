@@ -97,17 +97,18 @@ public class NLQ2DS {
 			}
 		}
 
+		System.out.println(varPosition);
+
 		if (varPosition == -1 && (input.contains("은?") || input.contains("는?"))) {
 
 			declStc = "무엇은 " + input.substring(0, input.length() - 2);
 			// return "This question cannot be processed";
 
-		}
+		} else if (varPosition == 0) {
+		
+			// 어떤 강이 서울을 흐르는가?
+			// 어떤는 서울을 흐르는 강이다.
 
-		// 어떤 강이 서울을 흐르는가?
-		// 어떤는 서울을 흐르는 강이다.
-		else if (varPosition == 0) {
-			
 			if(subject.equals("어떤")){
 			
 				input = input.substring(0, input.length() - 2);
@@ -137,6 +138,10 @@ public class NLQ2DS {
 
 			} else {
 
+				if(varPosition < 2){
+					declStc = "";
+				}
+				
 				declStc = subject + "는 " + input.substring(0, varPosition - 2);
 
 			}
@@ -144,6 +149,8 @@ public class NLQ2DS {
 		}
 
 		declStc = declStc + "이다.";
+
+		System.out.println(declStc);
 
 		return declStc;
 	}
