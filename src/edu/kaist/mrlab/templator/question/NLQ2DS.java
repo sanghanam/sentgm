@@ -161,7 +161,7 @@ public class NLQ2DS {
 
 		convt.loadVarDic();
 
-		String question = "어떤 강이 서울을 흐르는가?";
+		String question = "김자옥의 출신 국가는 어디인가?";
 		String declStc = convt.getDS(question);
 		System.out.println("NLQ:\t" + question);
 		System.out.println("DS:\t" + declStc);

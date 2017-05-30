@@ -167,7 +167,7 @@ public class QTGenerator {
 	public static void main(String[] ar) {
 
 		QTGenerator qtg = new QTGenerator();
-		qtg.generateQT("무엇은 와인 생산지로 알려진 나라이다.");
+		qtg.generateQT("어디는 김자옥의 출신 국가이다.");
 
 	}
 }

@@ -26,7 +26,7 @@ public class Main {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return UriBuilder.fromUri("http://" + IP + "/").port(1666).build();
+		return UriBuilder.fromUri("http://121.254.173.78/").port(1666).build();
 	}
 
 	public static final URI BASE_URI = getBaseURI();

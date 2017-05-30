@@ -20,7 +20,6 @@ import edu.kaist.mrlab.templator.srdf.tools.KoreanAnalyzer;
 public class KoSeCT {
 
 	private static BufferedReader filebr;
-	// private static BufferedWriter filebw;
 
 	CoreExtractor parser = new CoreExtractor();
 	KoreanAnalyzer ex = new KoreanAnalyzer();
@@ -155,21 +154,6 @@ public class KoSeCT {
 
 		try {
 
-			// String sentence = kosect.inputSentence();
-			// sentence = kosect.changeSymbol(sentence);
-			// sentence = kosect.removeUTF8BOM(sentence);
-			// kosect.doPreprocess(sentence);
-			//
-			// System.out.println("\n\n number of sentences : " + sentence);
-			// System.out.println(" number of seperated sentences: " +
-			// seperatedSentence);
-
-			// String sbj = "물리천문학";
-			//
-			// filebr = new BufferedReader(new InputStreamReader(
-			// new FileInputStream("data\\gold_standard\\gold_standard_" + sbj +
-			// ".txt"), "UTF8"));
-
 			filebr = new BufferedReader(new InputStreamReader(new FileInputStream("data\\test\\sample4.txt"), "UTF8"));
 			String input = null;
 			while ((input = filebr.readLine()) != null) {
@@ -177,9 +161,6 @@ public class KoSeCT {
 					input = kosect.changeSymbol(input);
 					input = kosect.removeUTF8BOM(input);
 					input = p.removeBracket(input);
-					// System.out.println("============= " + sentence + "
-					// =============");
-					// System.out.println("original sentence: " + input);
 					kosect.doPreprocessWithoutSplitting(input);
 
 				}
@@ -187,10 +168,6 @@ public class KoSeCT {
 			}
 
 			filebr.close();
-			// System.out.println(p1 + "\t" + p2 + "\t" + p3 + "\t" + p4);
-			// System.out.println("\n\n number of sentences : " + sentence);
-			// System.out.println(" number of seperated sentences: " +
-			// seperatedSentence);
 
 		} catch (Exception e) {
 			e.printStackTrace();

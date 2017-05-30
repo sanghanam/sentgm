@@ -252,9 +252,11 @@ public class DPWDChanger {
 						splitVNP(lastDepen, lastDepenHead, lastDepenMod, lastDepenID, lastDepenText, lastDepenLabel, 1);
 
 					}
+					
+					output = reader.toJSONString();
 
-					Gson gson = new GsonBuilder().setPrettyPrinting().create();
-					output = gson.toJson(reader);
+//					Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//					output = gson.toJson(reader);
 					// System.out.println(output);
 				}
 			}

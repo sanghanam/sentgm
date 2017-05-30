@@ -32,7 +32,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>edu.kaist.mrlab.templator.rest.Main</mainClass>
+					<mainClass>edu.kaist.mrlab.templator.srdf.SenTGM</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

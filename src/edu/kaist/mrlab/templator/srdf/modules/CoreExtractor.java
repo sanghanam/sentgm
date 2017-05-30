@@ -52,8 +52,9 @@ public class CoreExtractor {
 				
 				output.put("sentence", tempOUT);
 
-				Gson gson = new GsonBuilder().setPrettyPrinting().create();
-				resultOfCE = gson.toJson(output);
+				resultOfCE = output.toJSONString();
+//				Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//				resultOfCE = gson.toJson(output);
 
 			}
 		} catch (Exception e) {
